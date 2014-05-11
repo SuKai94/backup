@@ -11,4 +11,5 @@
 ###python目录
 >+ **one.py：函数式编程**
 >+ **two.py：函数修饰器**
->+ **two.py：python简单的多线程**
+>+ **three.py：简单的多线程**
+>+ **four.py：正则表达式初探**
