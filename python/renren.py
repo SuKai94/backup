@@ -58,7 +58,7 @@ class renren(object):
 		self.opener.close()
 
 def main():
-	sk_renren = renren('1250471161@qq.com', 'sk158,628,68707')
+	sk_renren = renren('your email here', 'your password here')
 	sk_renren.login()
 
 	visits = sk_renren.recent_visit()
