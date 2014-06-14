@@ -88,7 +88,7 @@ public class CharacterStreamTest{
 ```
 单从表面上，与字节流太相似了。所有的操作都是以字符为操作单元进行，汉字可以作为一个整体一个一个地读入与写出，不会再和字节流一样需要拆分进行
 
-将字节流转换为字符流：Java提供了两个类，来方便在取到字节流的时候，将其处理为字符流：InputStreamReader和OuputStreamReader。在进行socket开发的时候，你们将体会这带来的好处
+将字节流转换为字符流：Java提供了两个类，来方便在取到字节流的时候，将其处理为字符流：InputStreamReader和OuputStreamWriter。在进行socket开发的时候，你们将体会这带来的好处
 
 如何实现以行为单位的处理：
 ```java
@@ -109,7 +109,7 @@ public class LineOrientedTest{
 
 		try{
 			in = new BufferedReader(path+"I/O文本.txt");
-			out = new PrintWriter("path+"I/O文件副本.txt");
+			out = new PrintWriter(path+"I/O文件副本.txt");
 			int c;
 			while((c = in.readLine()) != null){
 				out.println(c);
@@ -137,7 +137,7 @@ public class LineOrientedTest{
 
 缓冲流采取了缓冲策略来减少对底层I/O的访问，在读取数据的时，缓冲流优先从缓冲读取数据，只有当缓冲区没有数据时，才触发到底层的I/O访问;在写出数据时，缓冲流优先将数据写到缓冲z区，当缓冲区满时，才触发到底层I/O的访问。这样，就不至于在每回进行极少数据的输入输出时都引起对底层I/O的访问，提高了效率
 
-java提供了四种缓冲流，分别对应字节与字符的输入输出：BufferedInputStream和BufferedOutputStream用于创建基于字节六的缓冲流;BufferedReader和BufferedWriter基于字符流的缓冲流
+java提供了四种缓冲流，分别对应字节与字符的输入输出：BufferedInputStream和BufferedOutputStream用于创建基于字节流的缓冲流;BufferedReader和BufferedWriter基于字符流的缓冲流
 
 几乎所有的非缓冲流都可以被转换为缓冲流，方法就是：以非缓冲流为参数构造缓冲流：
 ```java
@@ -157,7 +157,7 @@ import java.io.IOException;
 public class CommandLineTest{
 	
 	public class void main(String[] args){
-		INputStreamReader stdin = new InputStreamReader(System.in);
+		InputStreamReader stdin = new InputStreamReader(System.in);
 		BufferedReader bufin = new BufferedReader(stdin);
 
 		System.out.print("请输入： ");
@@ -231,7 +231,7 @@ public class SerializableTest{
 		try{
 			fos = new FileOutputStream(path);
 			oos = new ObjectOutputStream(fos);
-			oos.writeObjec(d);
+			oos.writeObjet(d);
 
 			fis = new FileInputStream(path);
 			ois = new ObjectInputStream(fis);
