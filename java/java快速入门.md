@@ -477,7 +477,9 @@ public class Dog implements Comparable{
 for(Object obj: WareHouse){
     ((Dog)obj).bark();
 }
+
 Collections.sort(WareHouse);
+
 for(Object obj: WareHouse){
     ((Dog)obj).bark();
 }
@@ -515,7 +517,7 @@ for(Object obj: WareHouse){
 }
 /*排序：*/
 TreeSet ts = new TreeSet(WareHouse);
-for(Object obj: WareHouse){
+for(Object obj: ts){
     ((Dog)obj).bark();
 }
 ```
@@ -535,7 +537,7 @@ HashMap的key是不重复的
 ```java
 Map WareHouse = new HashMap();
 /*WareHouse.put(key, value);*/
-/*DOg temp = (Dog)WareHouse.get(key);
+/*Dog temp = (Dog)WareHouse.get(key);
 ```
 注意，HashMap和HashSet都是基于散列的，所以是不可排序的
 
