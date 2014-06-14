@@ -231,7 +231,7 @@ public class SerializableTest{
 		try{
 			fos = new FileOutputStream(path);
 			oos = new ObjectOutputStream(fos);
-			oos.writeObjet(d);
+			oos.writeObject(d);
 
 			fis = new FileInputStream(path);
 			ois = new ObjectInputStream(fis);
