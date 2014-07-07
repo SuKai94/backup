@@ -1,4 +1,4 @@
-##java进阶之异常
+##Java进阶之异常
 
 1.异常
 
@@ -98,7 +98,7 @@ while(true){
 ret = Integer.parseInt(str);
 return ret;
 ```
-还有一种利用h异常处理达到同样效果的：
+还有一种利用异常处理达到同样效果的：
 ```java
 while(true){
 			System.out.print("请输入数字：  ");

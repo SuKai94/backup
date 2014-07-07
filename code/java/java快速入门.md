@@ -1,14 +1,11 @@
-##java快速入门（很杂）
+##Java快速入门（很杂）
 
-《java轻松入门》（人们邮电出版社  郝焕 编著）第一篇 筑基
+《Java轻松入门》（人民邮电出版社  郝焕 编著）
 
 1.this是隐性参数，方法调用的时候，尽管方法的参数列表里面没有this，java都会“默默“地将this参数传递给方法。
 ```java
 class Human
 {
-	/**
-     * accessor
-     */
     int getHeight()
     {
         return this.height;
@@ -19,9 +16,6 @@ class Human
 ```
 this并不是必需的，上述方法可以写为：
 ```java
-    /**
-     * accessor
-     */
     int getHeight()
     {
         return height;
@@ -91,7 +85,7 @@ class Dog{
 }
 ```
 
-6.static，建议无必要，尽量不使用
+6.static
 ```java
 public class Dog{
     private String color = "黄色";
@@ -173,7 +167,7 @@ DogGril gril = new Dog()   这很危险
 
 父类的方法被覆写后，子类无法通过普通的方法调用父类中的被覆写的方法，若要调用父类被覆写的方法，用super关键字,例如：`super.f()`
 
-静态方法的覆写与成员方法一样，在子类中写一个同名/同参数列表的静态方法
+静态方法的覆写与成员方法一样，在子类中写一个同名，同参数列表的静态方法
 
 11.抽象类和final类
 
@@ -436,7 +430,7 @@ for(Object obj: WareHouse){
     ((Dog)obj).bark();
 }
 ```
-ArrayList的自动义排序：（以狗狗类为例）
+ArrayList的自定义排序：（以狗狗类为例）
 ```java
 public class Dog implements Comparable{
     private String color = "黄色";
@@ -486,13 +480,13 @@ for(Object obj: WareHouse){
 ```
 3）不允许重复的仓库Set
 
-HashSet类：这种实现一般要求放入的元素覆写hashCode方法，除次之外，用法和ArrayList相似
+HashSet类：这种实现一般要求放入的元素覆写hashCode方法，除此之外，用法和ArrayList相似
 
 但是，有些区别：
 
 HashSet不允许放入重复元素
 
-HashSet不能记住Collections类进行排序
+HashSet不能借助Collections类进行排序
 
 HashSet方法没有ArrayList丰富
 ```java
@@ -556,7 +550,7 @@ List<Dog> dogList = new ArrayList<Dog>();
 /*取出时，不再需要转型*/
 Dog temp = dogList.get(0);
 
-LIst<String> strList = new ArrayList<String>();
+List<String> strList = new ArrayList<String>();
 ```
 
 
