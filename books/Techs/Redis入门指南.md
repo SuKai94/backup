@@ -28,4 +28,53 @@ redis虽然是作为数据库开发的，但是由于其丰富的功能，更多
 #### 1.2.4 简单稳定
 redis使用命令来读取数据，将相当于SQL语句。redis还提供了几十种不同编程语言的客户端库，这些库都很好地封装了redis命令，使得在程序中更好的和redis交互
 
+### 第二章 准备
+#### 2.1 安装
+#### 2.2 启动和停止redis
+安装完redis的下一步就是启动它，先来看看redis包含的可执行文件有哪些：
+- redis-server：redis服务器
+- redis-cli：redis命令行客户端
+- redis-benchmark：redis性能测试工具
+- redis-check-aof：AOF文件修复工具
+- redis-check-dump：RDB文件检查工具
+
+#### 2.2.1 启动redis
+有：直接启动和初始化脚本启动两种方式，分为适用于开发环境和生产环境
+
+1. 直接启动：redis-server，默认端口是6379，可以通过redis-server --port 8888指定端口
+2. 初始化脚本启动redis，在redis源代码目录的utils文件夹下有一个名为redis_init_script的初始化脚本
+
+#### 2.2.2 停止redis
+考虑到redis有可能在将内存数据同步到硬盘，强制终止redis可能会造成数据丢失，正确的是发送shutdown命令：
+
+```bash
+redis-cli shutdown
+```
+
+当redis接受到shutdown之后，会先断开所有客户端连接，然后根据配置执行持久化，最后完成退出。redis也可以妥善处理sigterm信号，所以使用“kill redis进程id”也可以达到同样效果
+
+#### 2.3 redis命令行客户端
+是我们学习和测试redis的重要工具
+
+#### 2.4 配置
+我们之前通过redis-server的启动参数port设置了redis的端口号，除此之外，redis还支持其他配置选项，如是否开启持久化，日志级别等。由于配置的选项较多，通过启动参数设置这些选项并不方便，所以redis支持通过配置文件来设置这些选项。
+
+```bash
+redis-server /path/to/redis.conf
+```
+
+通过启动参数传递同名的配置文件选项会覆盖配置文件中相应的参数：
+
+```bash
+redis-server /path/th/redis.conf --loglevel warning
+```
+
+redis提供了配置文件的模板redis.conf，在源代码目录的根目录。除此之外，还可以在redis运行时通过config set命令在不重新启动redis的情况下动态修改redis配置。
+
+#### 2.5 多数据库
+实际上redis实例提供了多个用来存储数据的字典，客户端可以指定将数据存储在哪个字典中，与我们熟知的一个关系数据库实例可以创建多个数据库类似，所以可以将其中的每个字典都理解成一个独立的数据库。每个数据库从0开始递增数字命名，redis默认支持16个数据库。
+
+然而，又和我们理解的数据库有区别：redis不支持自定义数据库名，也不支持为每个数据库设置密码，所以一个客户端要么可以访问全部数据，要么一个访问权限都没有。更重要的一点是，多个数据库之间并不是完全隔离的，不同的应用应该使用不同的redis实例，而非不同的数据库。
+
+
 
