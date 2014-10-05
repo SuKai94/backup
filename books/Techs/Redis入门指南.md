@@ -41,8 +41,8 @@ redis使用命令来读取数据，将相当于SQL语句。redis还提供了几�
 #### 2.2.1 启动redis
 有：直接启动和初始化脚本启动两种方式，分为适用于开发环境和生产环境
 
-1. 直接启动：redis-server，默认端口是6379，可以通过redis-server --port 8888指定端口
-2. 初始化脚本启动redis，在redis源代码目录的utils文件夹下有一个名为redis_init_script的初始化脚本
+1.直接启动：redis-server，默认端口是6379，可以通过redis-server --port 8888指定端口
+2.初始化脚本启动redis，在redis源代码目录的utils文件夹下有一个名为redis_init_script的初始化脚本
 
 #### 2.2.2 停止redis
 考虑到redis有可能在将内存数据同步到硬盘，强制终止redis可能会造成数据丢失，正确的是发送shutdown命令：
@@ -81,14 +81,14 @@ redis提供了配置文件的模板redis.conf，在源代码目录的根目录�
 #### 3.2 字符串类型
 一个字符串类型键允许存储的数据最大容量是512MB。
 #### 3.2.2 命令
-1. 赋值与取值
+1.赋值与取值
 
 ```bash
 set key value
 get key
 ```
 
-2. 递增数字
+2.递增数字
 
 字符串类型可以存储任何形式的字符串，当存储的字符串是整数形式时，redis提供一个incr命令，让当前键值递增，并返回递增后的值：
 
@@ -100,37 +100,37 @@ get key
 `$ postID = incr posts:count`
 
 #### 3.2.4 命令拾遗
-1. 增加指定整数
+1.增加指定整数
 
 `incrby key increment`
 
-2. 减少指定整数
+2.减少指定整数
 
 `decr key`
 
 `decrby key increment`
 
-3. 增加指定浮点数
+3.增加指定浮点数
 
 `incrbyfloat key increment`
 
-4. 向尾部追加值
+4.向尾部追加值
 
 `append key value`
 
 如果键不存在，就将键值设为value，返回值是追加后字符串的长度
 
-5. 获取字符串的长度
+5.获取字符串的长度
 
 `strlen key`
 
-6. 同时获取/设置多个键值
+6.同时获取/设置多个键值
 
 `mset key1 v1 key2 v2 ...`
 
 `mget key1 key2 ...`
 
-7. 位操作
+7.位操作
 - `getbit key offset`：获得一个字符串类型键指定位置(offset)的二进制位的值，索引从0开始;如果索引超过了键值的二进制位的实际长度，则默认位值为0
 - `setbit key offset value`：设置字符串类型键指定位置的二进制位的值，返回值是该位置的旧值。如果设置的位置超过了键值二进制位的长度，setbit命令将自动将中间的二进制位设置为0，同理设置一个不存在键的指定二进制位的值，将自动将其前面的位赋值为0。
 - `bitcount key`：获得字符串类型键中值是1的二进制位个数，可以通过参数限制统计的字节范围，如果只希望统计前两个字节：`bitcount key 0 1`
