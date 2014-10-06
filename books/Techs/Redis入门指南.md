@@ -138,8 +138,8 @@ get key
 
 利用位操作可以很紧凑地存储布尔值
 
-#### 散列类型
-#### 介绍
+#### 3.3 散列类型
+#### 3.3.1 介绍
 散列类型适合存储对象：使用对象类别和ID构成键名，使用字段表示对象属性，而字段值则存储属性值。
 
 ![redis散列数据类型举例](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/redis%E6%95%A3%E5%88%97%E7%B1%BB%E5%9E%8B%E4%B8%BE%E4%BE%8B.png)
@@ -150,7 +150,7 @@ redis并不要求每个键都依据某种结构存储，我们完全可以自由
 
 ![redis散列类型增减属性](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/redis%E6%95%A3%E5%88%97%E7%B1%BB%E5%9E%8B%E5%A2%9E%E5%8A%A0%E5%B1%9E%E6%80%A7.png)
 
-#### 命令
+#### 3.3.2 命令
 
 1.赋值与取值
 
@@ -180,9 +180,9 @@ hset命令是有则更新，并返回0;无则插入，并返回1
 
 `hdel key field [field...]`，返回值是被删除字段的个数
 
-#### 实践
+#### 3.3.3 实践
 
-#### 命令拾遗
+#### 3.3.4 命令拾遗
 
 1.只获取字段名或字段值
 
@@ -194,3 +194,64 @@ hvals key
 2.获得字段数量
 
 `hlen key`
+
+#### 3.4 列表类型
+#### 3.4.1 介绍
+列表类型可以存储一个有序的字符串列表，常用的操作是向列表两端添加元素，或获得列表的某一个片段。列表内部使用双向链表实现，所以向列表两端添加元素时间复杂度为O(1)，越接近两端的元素获取速度越快。
+
+#### 3.4.2 命令
+
+1.向列表两端增加元素
+
+```bash
+lpush key value[ value ...]
+rpush key value[ value ...]
+```
+
+2.从列表两端弹出元素
+
+```bash
+lpop key
+rpop key
+```
+
+3.获取列表元素的个数
+
+```bash
+llen key
+```
+
+4.获得列表片段
+
+```bash
+lrange key start stop
+```
+当然也支持负索引，`lrange key -2 -1`，表示从右边开始计算序数，-1表示右边第一个，-2表示右边第二个
+
+如果stop范围大于索引范围，则会返回列表最右边的元素
+
+5.删除列表中指定的值
+
+`lrem key count value`：lrem会删除列表中前count值为value的元素，返回值是实际删除的元素个数。
+- 当count>0时，lrem会从列表左边开始删除前count个值为value的元素;
+- 当count<0时，lrem会从列表右边开始删除前|count|个值为value的元素;
+- 当count=0时，lrem会删除所有值为value的元素;
+
+#### 3.4.5 命令拾遗
+
+1.获得/设置指定索引的元素值
+
+```bash
+lindex key index
+lset key index value
+```
+
+2.只保留列表指定片段
+`ltrim key start end`
+
+3.向列表中插入元素
+`linsert key before|after pivot value`：linsert首先会在列表中从左到右查找值为pivot的元素，然后更具第二个参数是before还是after来决定将value插到该元素前面还是后面。
+
+4.将元素从一个列表转到另一个列表R
+`poplpush source destination`
+
