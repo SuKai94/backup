@@ -137,3 +137,60 @@ get key
 - `bitop or res key1 kye2`：将字符串key1和key2执行位或操作，将结果存放在res键中。总结就是bitop可以对多个字符串类型键进行位操作，有and,or,xor,not。
 
 利用位操作可以很紧凑地存储布尔值
+
+#### 散列类型
+#### 介绍
+散列类型适合存储对象：使用对象类别和ID构成键名，使用字段表示对象属性，而字段值则存储属性值。
+
+![redis散列数据类型举例](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/redis%E6%95%A3%E5%88%97%E7%B1%BB%E5%9E%8B%E4%B8%BE%E4%BE%8B.png)
+
+提示：散列类型和其他数据类型不支持数据类型嵌套，比如散列类型字段值只能是字符串，不支持其他数据类型。
+
+redis并不要求每个键都依据某种结构存储，我们完全可以自由地为任何健增减字段而不影响其他键，如下图为ID为1的汽车增加日期属性。
+
+![redis散列类型增减属性](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/redis%E6%95%A3%E5%88%97%E7%B1%BB%E5%9E%8B%E5%A2%9E%E5%8A%A0%E5%B1%9E%E6%80%A7.png)
+
+#### 命令
+
+1.赋值与取值
+
+```bash
+hset key field value
+hget key field
+hmset key field1 value1 [field2 value2]
+hmget key field1 [field2]
+hgetall key
+```
+
+hset命令是有则更新，并返回0;无则插入，并返回1
+
+2.判断字段是否存在
+
+`hexists key field`，有则返回1，无则0
+
+3.当字段不存在时赋值
+
+`hsetnx key field value`，如果字段已经存在，hsetnx将不执行任何操作。而且这操作是原子性的，不存在竞态条件。
+
+4.增加数字
+
+`hincrby key field increment`：使字段增加指定的整数
+
+5.删除字段
+
+`hdel key field [field...]`，返回值是被删除字段的个数
+
+#### 实践
+
+#### 命令拾遗
+
+1.只获取字段名或字段值
+
+```bash
+hkeys key
+hvals key
+```
+
+2.获得字段数量
+
+`hlen key`
