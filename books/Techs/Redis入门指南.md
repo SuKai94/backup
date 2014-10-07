@@ -284,7 +284,7 @@ sinter key [key ...]
 sunion key [key ...]
 ```
 
-#### 命令拾遗
+#### 3.5.3 命令拾遗
 
 1.获取集合中元素个数
 
@@ -308,4 +308,82 @@ sunionstore destination key [key ...]
 4.从集合中弹出一个元素
 
 `spop key`
+
+#### 3.6 有序集合类型
+#### 3.6.1 介绍
+
+在集合类型基础上，有序集合类型为集合中每个元素都关联了一个分数。有序集合和列表有些相似，但是二者仍有很大的区别：
+- 列表通过链表实现，获取靠近两端的数据速度极快，当元素增多后，访问中间数据的速度就较慢，所以更加适合实现如“新鲜事”和“日志”这样很少访问中间元素的应用。
+- 有序集合采用散列表和跳跃表实现，所以即使读取中间位置的元素，速度也很快。
+- 列表不能简单调整某个元素的位置，但是有序集合可以。
+- 有序集合要比列表更耗费内存。
+
+#### 3.6.2 命令
+
+1.增加元素
+
+`zadd key score member [score member]`
+
+其中+inf和-inf表示正无穷和负无穷
+
+2.获取元素的分数
+
+`zscore key member`
+
+3.获得排名在某个范围的元素列表
+
+`zrange key start stop [withscores]`：按照元素分数从小到大的顺序返回索引从start到stop之间的所有元素(包含两端元素);如果需要同时获得元素的分数的话，就可以在命令尾部加上withscores参数。如果两个元素分数相同，就按照字典顺序排列。
+
+`zrevrange key start stop [withscores]`：唯一不同在于，zrevrange命令是按照从大到小的顺序给出结果的。
+
+4.获得指定分数范围的元素
+
+`zrangebyscore key min max [withscores] [limit offset count]`：该命令按照元素分数从小到大顺序返回分数在min和max之间(包含min和max)的元素;如果希望分数范围不包含断点值，可以在分数前加上“(”符号;在本命令中limit offset count就是指在获得元素的基础上向后偏移offset个元素，并且只获取前count个元素。
+
+`zrevrangebyscore key min max [withscores] [limit offset count]`：不仅是按照元素分数从大到小的顺序给出结果的，而且它的min和max参数顺序也是相反的
+
+5.增加某个元素的分数
+
+`zincrby key increment member`
+
+#### 3.6.4 命令拾遗
+
+1.获得集合中元素的数量
+
+`zcard key`
+
+2.获得指定分数范围内元素的个数
+
+`zcount key min max`
+
+3.删除一个或多个元素
+
+`zrem key member [member ...]`
+
+4.按照排名范围删除元素
+
+`zremrangebyrank key start stop`
+
+5.按照分数范围删除元素
+
+`zremrangebyscore key min max`
+
+6.获得元素的排名
+
+```bash
+zrank key member #按照元素从小到大顺序获得指定元素的排名，从0开始
+zrevrank key member #相反
+```
+
+7.计算有序集合的交集
+
+`zinterstore destination numkeys key [key ...] [weights weight [weight ...]] [agregate sum[min][max]]`
+
+- (1)当aggregate是sum时（默认值），destination键中元素的分数是每个参与计算的集合中该元素的分数之和
+- (2)min,就是各个参与计算元素分数的最小值
+- (3)max,............................大.
+
+
+
+
 
