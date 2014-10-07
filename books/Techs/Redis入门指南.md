@@ -255,3 +255,57 @@ lset key index value
 4.将元素从一个列表转到另一个列表R
 `poplpush source destination`
 
+#### 3.5 集合类型
+#### 3.5.2 命令
+
+1.增加/删除元素
+
+```bash
+sadd key member [member ...]
+srem key member [member ...]
+```
+
+2.获得集合中的元素
+
+`smembers key`
+
+3.判断元素是否在集合中
+
+`sismember key member`
+
+4.集合间运算
+
+```bash
+#差集
+sdiff key [key ...]
+#交集
+sinter key [key ...]
+#并集
+sunion key [key ...]
+```
+
+#### 命令拾遗
+
+1.获取集合中元素个数
+
+`scard key`
+
+2.进行集合运算，并将结果存储
+
+```
+sdiffstore destination key [key ...]
+sinterstore destination key [key ...]
+sunionstore destination key [key ...]
+```
+
+3.随机获取集合中的元素
+
+`srandmember key [count]`
+
+- 当count为正数：会随机从集合里获取count个不重复的元素，如果count值大于集合元素
+- 当count为负数：会随机从集合里获取|count|个元素，这些元素有可能相同
+
+4.从集合中弹出一个元素
+
+`spop key`
+
