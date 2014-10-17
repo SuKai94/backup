@@ -1,2 +1,2 @@
-Record what i think is important
+Record What I Think Is Important
 ===
