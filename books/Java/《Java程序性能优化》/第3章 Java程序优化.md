@@ -84,3 +84,27 @@ ByteBuffer readOnly = b.asReadOnlyBuffer();
 
 只读缓冲区有效保证核心数据安全，试图对只读缓冲区做修改，会抛出java.nio.ReadOnlyBufferException。修改原缓冲区，只读缓冲区也会修改，因为是共享内存块
 
+#### 8.文件映射到内存
+
+NIO提供一种将文件映射到内存的方法进行I/O操作，它比常规的基于流I/O快很多，主要由`FileChannel.map()`实现
+
+`MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_WRITE, 0, 1024);`以上代码将文件前1024个字节映射到内存
+
+#### 9.处理结构化数据
+
+散射（Scattering）和聚集（Gathering）,散射是将数据读入一组Buffer，而不仅仅是一个，聚集是将数据写入一组Buffer中
+
+例如，对一个格式固定的文件，可以构造若干个文件结构的Buffer，通过散射读可以一次将内容装配到各个对应的Buffer中;如果创建指定格式的文件，只要先构造好大小合适的Buffer对象，使用聚集写的方式，可以很快创建出文件
+
+### 3.3.4 MappedByteBuffer性能评估
+
+结论：使用MappedByteBuffer可以大大提高读取和写入文件的速度，实际开发中可以适当使用这种方式
+
+### 3.3.5 直接访问内存
+
+`DirectBuffer`：继承自ByteBuffer，直接分配在物理内存中，不占用堆空间，操作速度更快，但是创建和销毁DirectBuffer花费远高于ByteBuffer
+
+申请DirectBuffer的方法如下：`ByteBuffer.allocateDirect()`，可以使用MaxDIrectMemorySize指定DirectBuffer最大可用空间，-Xmx指定最大堆空间（ByteBuffer）
+
+## 3.4 引用类型
+
