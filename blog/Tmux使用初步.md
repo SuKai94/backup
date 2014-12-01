@@ -1,0 +1,32 @@
+# Tmux使用初步
+
+- time: 2014-08-14 12:00
+- tags: Linux, Tools
+
+---
+
+声明：CTRL-b　为前缀健，用于激活控制台
+
+## 面板操作
+
+- “ ：面板水平分割
+- % ：面板竖直分割
+- x ：关闭当前面板，需要输入y进行关闭确认
+- ! ：将当前面板置于新窗口
+- Ctrl+方向键 ：调整面板大小（调整幅度单位１单元格）
+- Alt+方向键：调整面板大小（调整幅度单位５单元格）
+- q ：显示面板编号
+- 方向键 ：选择面板
+
+## session操作
+
+- d ：脱离当前会话，但是为脱离，输入tmux attach重新连接
+- ? ：现实所有绑定热键
+
+## vim在bash和tmux下显示不一致
+
+在~/.bashrc中加入：`alias tmux="TERM=screen-256color-bce tmux"`
+在~/.tmux.conf加入：`set -g default-terminal "screen-256color"`
+使配置生效：`source ~/.bashrc`
+
+解决办法来自[stackoverflow](http://rhnh.net/2011/08/20/vim-and-tmux-on-osx)
