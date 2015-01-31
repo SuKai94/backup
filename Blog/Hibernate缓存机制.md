@@ -5,7 +5,7 @@
 
 ---
 
-## 什么是缓存？
+### 什么是缓存？
 
 [百度百科](http://baike.baidu.com/view/2273788.htm)说得好：缓存是介于应用程序和物理数据源之间，其作用是为了降低应用程序对物理数据源访问的频次，从而提高了应用的运行性能。缓存内的数据是对物理数据源中的数据的复制，应用程序在运行时从缓存读写数据，在特定的时刻或事件会同步缓存和物理数据源的数据。
 
@@ -17,7 +17,7 @@
 
 ![Hibernate缓存视图](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/hibernate%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.png)
 
-## 一个叼丝级别的缓存实现
+### 一个叼丝级别的缓存实现
 
 ```java
 
@@ -48,7 +48,7 @@ public class Cache {
 
 上述代码中, `getUser()`功能是根据id值查询User信息，它的第一步是从cache中查询，如果缓存命中，就将缓存中的User信息返回;否则就调用`getFromDB()`从数据库查询此id的User信息
 
-## Hibernate一级缓存
+### Hibernate一级缓存
 
 这是强制性缓存，每个数据请求都会经历一级缓存，缓存命中，就取出缓存数据信息;否则就连接数据库进行查询。session对象负责管理实体对象，当你更新多个对象数据时，hibernate会尽可能延迟更新数据对象的时间，以做到减少sql语句发送数量。一旦session被关闭，所有在此session旗下的缓存全部消失。
 
@@ -80,7 +80,7 @@ System.out.println(user1.getName());
 
 很明显，控制台打印出了两条sql，说明第一次session关闭后，其缓存也跟着丢失。
 
-## Hibernate二级缓存
+### Hibernate二级缓存
 
 二级缓存是可选缓存，由sessionFactory负责管理，默认情况下二级缓存不会开启，需要我们借助第三方插件以及配置文件开启。当然，在请求二级缓存之前肯定要去请求hibernate的一级缓存的
 
@@ -141,7 +141,7 @@ System.out.println(user1.getName());
 
 二级缓存存储的是对象，如果你只查询对象中的某些属性，是不会加入到二级缓存中去的
 
-## Hibernate查询缓存
+### Hibernate查询缓存
 
 要使用hibernate查询缓存功能，首先得在hibernate.cfg.xml中设置：
 

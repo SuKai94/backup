@@ -1,15 +1,17 @@
-# Tmux使用初步
+# tmux快捷键备忘
 
 - time: 2014-08-14 12:00
-- tags: Linux, Tools
+- tags: Linux, Tmux
 
 ---
 
+持续更新
+
 声明：CTRL-b　为前缀健，用于激活控制台
 
-## 面板操作
+### 面板操作
 
-- “ ：面板水平分割
+- " ：面板水平分割
 - % ：面板竖直分割
 - x ：关闭当前面板，需要输入y进行关闭确认
 - ! ：将当前面板置于新窗口
@@ -18,12 +20,12 @@
 - q ：显示面板编号
 - 方向键 ：选择面板
 
-## session操作
+### session操作
 
 - d ：脱离当前会话，但是为脱离，输入tmux attach重新连接
 - ? ：现实所有绑定热键
 
-## vim在bash和tmux下显示不一致
+### vim在bash和tmux下显示不一致
 
 在~/.bashrc中加入：`alias tmux="TERM=screen-256color-bce tmux"`
 在~/.tmux.conf加入：`set -g default-terminal "screen-256color"`

@@ -1,11 +1,11 @@
-# My-Vim
+# 我的Vim配置
 
 - time: 2014-09-09 12:00
-- tags: Linux, Tools
+- tags: Linux, Vim
 
 ---
 
-## Plugin Manager --- [Vundle](https://github.com/gmarik/Vundle.vim)
+### Plugin Manager --- [Vundle](https://github.com/gmarik/Vundle.vim)
 
 Vundle, a Plugin Manager, makes Plugin Install&Update&Search&Clean easier. 
 
@@ -17,7 +17,7 @@ Vundle, a Plugin Manager, makes Plugin Install&Update&Search&Clean easier.
 
 在你的`.vimrc`首部添加如下信息：
 
-``bash
+```bash
 set nocompatible              " be iMproved, required  
 filetype off                  " required  
 
@@ -72,7 +72,7 @@ filetype plugin indent on    " required
 
 （当然安装插件也支持非Github库，具体看刚刚粘帖的配置文件，以及无用插件清除:PluginClean等命令都可以在刚刚的配置文件中查看）
 
-## Vim配色-Molokai
+### Vim配色-Molokai
 
 将下载的molokai.vim放入~/.vim/color
 
@@ -99,13 +99,13 @@ hi IndentGuidesOdd guibg=red ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 ```
 
-## 目录树插件-NERDTree
+### 目录树插件-NERDTree
 
 ![Vim目录树插件](https://raw.githubusercontent.com/su-kaiyao/record/master/others/imgs/NERDTree.png)
 
 Vim命令行模式下`:NERDTree`,窗口切换`ctrl+w+h/l`
 
-## Vim补全
+### Vim补全
 
 网络上都推荐YCM代码补全超级插件,安装和配置都好繁琐,而且平时不写C-Family代码,Vim主要用来写py,所以用了安装简便的[jedi-vim](https://github.com/davidhalter/jedi-vim)
 
