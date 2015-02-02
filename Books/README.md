@@ -28,6 +28,12 @@
 
 ---
 
+#### 完成状态
+
+- [图解HTTP](http://book.douban.com/subject/25863515/)
+
+---
+
 ### 未读书籍
 
 - [《Python网络编程攻略》](http://t.cn/R7p2bBT)
