@@ -25,3 +25,9 @@
 #### 暂停状态
 
 - [《程序员，你伤不起》](http://book.douban.com/subject/24851357/)
+
+---
+
+### 未读书籍
+
+- [《Python网络编程攻略》](http://t.cn/R7p2bBT)
