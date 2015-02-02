@@ -30,7 +30,7 @@
 
 #### 完成状态
 
-- [图解HTTP](http://book.douban.com/subject/25863515/)
+- [《图解HTTP》](http://book.douban.com/subject/25863515/)
 
 ---
 
