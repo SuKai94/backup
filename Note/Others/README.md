@@ -5,4 +5,7 @@
 - [为什么今年这么多人放弃了阿里巴巴的offer？](http://t.cn/RzSoWjJ)
 - [Nginx资料汇总](http://t.cn/RzLqWuz)
 - [Java8大排序算法实现](http://t.cn/RZCJBRl)
-- 
+- [Flanker：Python的邮件地址和Mime解析库](https://github.com/mailgun/flanker)
+- [Java中的设计模式总结](http://t.cn/RPIfE3A)
+- [Android开源库整理网站](http://t.cn/R7zWsWB)
+- [gevent：Python的一个基于libev的并发库](hao.jobbole.com/python-gevent)
