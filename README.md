@@ -1,2 +1,4 @@
-Record What I Think Is Important
+record
 ===
+
+some important information to be recorded
