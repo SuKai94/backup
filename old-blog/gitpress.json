@@ -1,0 +1,54 @@
+{
+	"docs": {
+		"关于我的博客": "README.md",
+		"Java": "posts/Java",
+		"Python": "posts/Python",
+		"APM飞控": "posts/APM飞控",
+		"Sql Server": "posts/Sql Server",
+                "Github": "posts/Github",
+		"工具": "posts/工具",
+		"生活": "posts/Life"
+	},
+	"perpage": 5,
+	"template": "pithiness",
+	"types": {
+		"\\.(md||markdown)$" : "markdown",
+		"\\.(js||css||json)$" : "code",
+		"\\.html?$" : "html",
+		".*" : "text"
+	},
+	"title" : "Kaiyao's Blog",
+	"comment": {"type": "duoshuo", "short_name":"kaiyao"},
+	"friends":[
+	{
+		"name":"关于我",
+		"title":"关于我",
+		"url":"http://su-kaiyao.github.io/About-Me/"
+	},
+	{
+		"name":"StackOverFlow",
+		"title":"stackoverflow",
+		"url":"http://stackoverflow.com/users/3415818/kaiyao"
+	},
+	{
+		"name":"知乎",
+		"title":"知乎",
+		"url":"http://www.zhihu.com/people/su-kai-81"
+	},
+	{
+		"name":"Github",
+		"title":"github",
+		"url":"https://github.com/su-kaiyao"
+	},
+	{
+		"name":"新浪微博",
+		"title":"新浪微博",
+		"url":"http://weibo.com/sukaiy"
+	},
+	{
+		"name":"豆瓣",
+		"title":"豆瓣",
+		"url":"http://www.douban.com/people/81024152/"
+	}
+	]
+}
